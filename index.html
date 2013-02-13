@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+    <style>
+        .box {height: 170px; padding: 10px;}
+        .bot {margin-bottom: 20px;} /* Not overly sure about this. */
+        body {background: #444;}
+    </style>
+
+</head>
+
+    <body>
+        <div class="container">
+        <div class="logo">
+            <h2 style="margin-top: 1em; margin-bottom: 1em; color: #fff;">justin bieber</h2>
+        </div>
+            <div id="root" style="position: relative;">
+            
+                <div class="row-fluid bot">
+                    <div id="b1" data-ow="4" class="span4 box" style="background: #F09609">asdsad</div>
+                    <div id="b2" data-ow="4" class="span4 box" style="background: #8CBF26">asdasd</div>
+                    <div id="b3" data-ow="2" class="span2 box" style="background: #E671B8">asdasd</div>
+                    <div id="b4" data-ow="2" class="span2 box" style="background: #A200FF">asdasd</div>
+                </div>
+                
+                <div class="row-fluid bot">
+                    <div id="b5" data-ow="4" class="span4 box" style="background: #1BA1E2">asdasd</div>
+                    <div id="b6" data-ow="4" class="span4 box" style="background: #E51400">asdasd</div>
+                    <div id="b7" data-ow="2" class="span2 box" style="background: #339933">asdasd</div>
+                    <div id="b8" data-ow="2" class="span2 box" style="background: #643EBF">asdasd</div>
+                </div>
+                
+                <div class="row-fluid bot">
+                    <div id="b9" data-ow="2" class="span2 box" style="background: #00A0B1">asdasd</div>
+                    <div id="b10" data-ow="2" class="span2 box" style="background: #A700AE">asdasd</div>
+                    <div id="b11" data-ow="4" class="span4 box" style="background: #00A600">asdasd</div>
+                    <div id="b12" data-ow="4" class="span4 box" style="background: #0A5BC4">asdasd</div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="jquery-ui-1.10.0.custom.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
+        
+        <script>
+            $(function() {
+                $("body").append('<div class="container"><div class="row-fluid"><div id="test" class="span8 box">&nbsp;</div><div class="span4"></div></div>"')
+                var mainW = $("#test").width()
+                var padding = 10, marginBottom = 20
+                var mainH = ($("#b1").height() + padding) * 2 + marginBottom
+                var boxToRegion = {
+                    "b1": "00",
+                    "b2": "00",
+                    "b3": "10",
+                    "b4": "10",
+                    "b5": "00",
+                    "b6": "00",
+                    "b7": "10",
+                    "b8": "10",
+                    "b9": "01",
+                    "b10": "01",
+                    "b11": "11",
+                    "b12": "11"
+                }
+                
+                var regionToBox = {
+                    "00": [1, 2, 5, 6],
+                    "10": [2, 3, 4, 6, 7, 8],
+                    "01": [5, 6, 9, 10, 11],
+                    "11": [6, 7, 8, 11, 12]
+                }
+                
+                var regionToPos = {
+                    "00": $("#b1").position(),
+                    "10": $("#b2").position(),
+                    "01": $("#b5").position(),
+                    "11": $("#b6").position()
+                }
+                
+                console.log("Dimensions for main box: ", mainW, mainH)
+                
+                var active = ""
+                
+                $(".box").click(function(){
+                    var id = $(this).attr("id")
+                    if (active === id) {
+                        return true
+                    }
+                    if (active.length > 0) {
+                        var act = active // To avoid concurrency problems.
+                        var origi = $("#" + act)
+                        var op = origi.position()
+                        var am = {
+                            "left": op.left,
+                            "top": op.top,
+                            "width": origi.width(),
+                            "height": origi.height()
+                        }
+                        $("#" + act + "_1").animate(am, function(){
+                            $("#" + act + "_1").remove()
+                        })
+                        var fadeIn = regionToBox[boxToRegion[act]]
+                        for (var j in fadeIn) {
+                            $("#b" + fadeIn[j]).fadeTo(200, 100)
+                        }
+                    }
+                    active = id
+                    var a = $(this).clone()
+                    var w = $(this).width()
+                    var h = $(this).height()
+                    var pos = $(this).position()
+                    a.css("width", w + "px")    // Important.
+                    a.css("height", h + "px")   // Important.
+                    a.attr("id", a.attr("id") + "_1")
+                    a.css("position", "absolute")
+                    a.css(pos)          // Without this, element will appear at root 0 0
+                    var region = boxToRegion[id]
+                    if (region == "00" || region == "01") { // Think about other ways.
+                        a.css("margin-left", 0)
+                    }
+                    $("#root").append(a)
+                    var toFade = regionToBox[region]
+                    for (var i in toFade) {
+                        $("#b" + toFade[i]).fadeTo(200, 0)
+                    }
+                    var rp = regionToPos[region]
+                    var anim = {
+                        "left": rp.left,
+                        "top": rp.top,
+                        "width": mainW,
+                        "height": mainH
+                    }
+                    a.animate(anim, 200)
+                    on = true
+                })
+            })
+        </script>
+    </body>
+
+</html>
