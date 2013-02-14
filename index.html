@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
     <style>
-        .box { height: 170px; padding: 10px;}
-        .bot { margin-bottom: 20px;} /* Not overly sure about this. */
+        .box { height: 170px; padding: 8px;}
+        .bot { margin-bottom: 8px;} /* Not overly sure about this. */
         .upper{ background: #1D1B1F;} /* padding-bottom: 2em; border-bottom: 1px solid #ccc; */
         .lower{ margin-top: 1em;}
          body { background: #1D1B1F; color: #fff;} /* #e2e2e2, #001941 vivid blue, 1D1B1F */
@@ -179,7 +179,7 @@
                 $("body").append('<div id="test-c" class="container" style="height: 0px; overflow: hidden;"><div class="row-fluid"><div id="test" class="span8 box">&nbsp;</div><div class="span4"></div></div>"')
                 var mainW = $("#test").width()
                 $("#test-c").remove()
-                var padding = 10, marginBottom = 20
+                var padding = 8, marginBottom = 8
                 var mainH = ($("#b1").height() + padding) * 2 + marginBottom
                 var boxToRegion = {
                     "b1": "00",
