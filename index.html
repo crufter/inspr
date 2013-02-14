@@ -3,43 +3,172 @@
 <head>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
     <style>
-        .box {height: 170px; padding: 10px;}
-        .bot {margin-bottom: 20px;} /* Not overly sure about this. */
-        body {background: #444;}
+        .box { height: 170px; padding: 10px;}
+        .bot { margin-bottom: 20px;} /* Not overly sure about this. */
+        .upper{ background: #1D1B1F;} /* padding-bottom: 2em; border-bottom: 1px solid #ccc; */
+        .lower{ margin-top: 1em;}
+         body { background: #1D1B1F; color: #fff;} /* #e2e2e2, #001941 vivid blue, 1D1B1F */
+        .teal {
+            background-image: linear-gradient(left , #008299 0%, #009FB1 50%);
+            background-image: -o-linear-gradient(left , #008299 0%, #009FB1 50%);
+            background-image: -moz-linear-gradient(left , #008299 0%, #009FB1 50%);
+            background-image: -webkit-linear-gradient(left , #008299 0%, #009FB1 50%);
+            background-image: -ms-linear-gradient(left , #008299 0%, #009FB1 50%);
+            
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                right top,
+                color-stop(0, #008299),
+                color-stop(0.5, #009FB1)
+            );
+        }
+        .blue {
+            background-image: linear-gradient(left , #2672EC 0%, #2E8EEF 50%);
+            background-image: -o-linear-gradient(left , #2672EC 0%, #2E8EEF 50%);
+            background-image: -moz-linear-gradient(left , #2672EC 0%, #2E8EEF 50%);
+            background-image: -webkit-linear-gradient(left , #2672EC 0%, #2E8EEF 50%);
+            background-image: -ms-linear-gradient(left , #2672EC 0%, #2E8EEF 50%);
+            
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                right top,
+                color-stop(0, #2672EC),
+                color-stop(0.5, #2E8EEF)
+            );
+        }
+        .purple {
+            background-image: linear-gradient(left , #8B0095 0%, #A800AE 50%);
+            background-image: -o-linear-gradient(left , #8B0095 0%, #A800AE 50%);
+            background-image: -moz-linear-gradient(left , #8B0095 0%, #A800AE 50%);
+            background-image: -webkit-linear-gradient(left , #8B0095 0%, #A800AE 50%);
+            background-image: -ms-linear-gradient(left , #8B0095 0%, #A800AE 50%);
+            
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                right top,
+                color-stop(0, #8B0095),
+                color-stop(0.5, #A800AE)
+            );
+        }
+        .dark_purple {
+            background-image: linear-gradient(left , #5133AB 0%, #653EBF 50%);
+            background-image: -o-linear-gradient(left , #5133AB 0%, #653EBF 50%);
+            background-image: -moz-linear-gradient(left , #5133AB 0%, #653EBF 50%);
+            background-image: -webkit-linear-gradient(left , #5133AB 0%, #653EBF 50%);
+            background-image: -ms-linear-gradient(left , #5133AB 0%, #653EBF 50%);
+            
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                right top,
+                color-stop(0, #5133AB),
+                color-stop(0.5, #653EBF)
+            );
+        }
+        .red {
+            background-image: linear-gradient(left , #AC193E 0%, #BF1E4C 50%);
+            background-image: -o-linear-gradient(left , #AC193E 0%, #BF1E4C 50%);
+            background-image: -moz-linear-gradient(left , #AC193E 0%, #BF1E4C 50%);
+            background-image: -webkit-linear-gradient(left , #AC193E 0%, #BF1E4C 50%);
+            background-image: -ms-linear-gradient(left , #AC193E 0%, #BF1E4C 50%);
+            
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                right top,
+                color-stop(0, #AC193E),
+                color-stop(0.5, #BF1E4C)
+            );
+        }
+        .orange {
+            background-image: linear-gradient(left , #D24826 0%, #DC562E 50%);
+            background-image: -o-linear-gradient(left , #D24826 0%, #DC562E 50%);
+            background-image: -moz-linear-gradient(left , #D24826 0%, #DC562E 50%);
+            background-image: -webkit-linear-gradient(left , #D24826 0%, #DC562E 50%);
+            background-image: -ms-linear-gradient(left , #D24826 0%, #DC562E 50%);
+            
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                right top,
+                color-stop(0, #D24826),
+                color-stop(0.5, #DC562E)
+            );
+        }
+        .green {
+            background-image: linear-gradient(left , #008A00 0%, #00A600 50%);
+            background-image: -o-linear-gradient(left , #008A00 0%, #00A600 50%);
+            background-image: -moz-linear-gradient(left , #008A00 0%, #00A600 50%);
+            background-image: -webkit-linear-gradient(left , #008A00 0%, #00A600 50%);
+            background-image: -ms-linear-gradient(left , #008A00 0%, #00A600 50%);
+            
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                right top,
+                color-stop(0, #008A00),
+                color-stop(0.5, #00A600)
+            );
+        }
+        .sky_blue {
+            background-image: linear-gradient(left , #094AB2 0%, #0A5BC4 50%);
+            background-image: -o-linear-gradient(left , #094AB2 0%, #0A5BC4 50%);
+            background-image: -moz-linear-gradient(left , #094AB2 0%, #0A5BC4 50%);
+            background-image: -webkit-linear-gradient(left , #094AB2 0%, #0A5BC4 50%);
+            background-image: -ms-linear-gradient(left , #094AB2 0%, #0A5BC4 50%);
+            
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                right top,
+                color-stop(0, #094AB2),
+                color-stop(0.5, #0A5BC4)
+            );
+        }
     </style>
 
 </head>
 
     <body>
-        <div class="container">
-        <div class="logo">
-            <h2 style="margin-top: 1em; margin-bottom: 1em; color: #fff;">justin bieber</h2>
-        </div>
-            <div id="root" style="position: relative;">
-            
-                <div class="row-fluid bot">
-                    <div id="b1" data-ow="4" class="span4 box" style="background: #F09609">asdsad</div>
-                    <div id="b2" data-ow="4" class="span4 box" style="background: #8CBF26">asdasd</div>
-                    <div id="b3" data-ow="2" class="span2 box" style="background: #E671B8">asdasd</div>
-                    <div id="b4" data-ow="2" class="span2 box" style="background: #A200FF">asdasd</div>
-                </div>
+        <div class="upper">
+            <div class="container">
+            <div class="logo">
+                <h2 style="margin-top: 1em; margin-bottom: 1em; color: #fff;">justin bieber</h2>
+            </div>
+                <div id="root" style="position: relative;">
                 
-                <div class="row-fluid bot">
-                    <div id="b5" data-ow="4" class="span4 box" style="background: #1BA1E2">asdasd</div>
-                    <div id="b6" data-ow="4" class="span4 box" style="background: #E51400">asdasd</div>
-                    <div id="b7" data-ow="2" class="span2 box" style="background: #339933">asdasd</div>
-                    <div id="b8" data-ow="2" class="span2 box" style="background: #643EBF">asdasd</div>
+                    <div class="row-fluid bot">
+                        <div id="b1" data-ow="4" class="span4 box orange">asdsad</div>
+                        <div id="b2" data-ow="4" class="span4 box blue">asdasd</div>
+                        <div id="b3" data-ow="2" class="span2 box dark_purple">asdasd</div>
+                        <div id="b4" data-ow="2" class="span2 box green">asdasd</div>
+                    </div>
+                    
+                    <div class="row-fluid bot">
+                        <div id="b5" data-ow="4" class="span4 box sky_blue">asdasd</div>
+                        <div id="b6" data-ow="4" class="span4 box dark_purple">asdasd</div>
+                        <div id="b7" data-ow="2" class="span2 box red">asdasd</div>
+                        <div id="b8" data-ow="2" class="span2 box green">asdasd</div>
+                    </div>
+                    
+                    <div class="row-fluid bot">
+                        <div id="b9" data-ow="2" class="span2 box teal">asdasd</div>
+                        <div id="b10" data-ow="2" class="span2 box red">asdasd</div>
+                        <div id="b11" data-ow="4" class="span4 box blue">asdasd</div>
+                        <div id="b12" data-ow="4" class="span4 box purple">asdasd</div>
+                    </div>
+                    
                 </div>
-                
-                <div class="row-fluid bot">
-                    <div id="b9" data-ow="2" class="span2 box" style="background: #00A0B1">asdasd</div>
-                    <div id="b10" data-ow="2" class="span2 box" style="background: #A700AE">asdasd</div>
-                    <div id="b11" data-ow="4" class="span4 box" style="background: #00A600">asdasd</div>
-                    <div id="b12" data-ow="4" class="span4 box" style="background: #0A5BC4">asdasd</div>
-                </div>
-                
             </div>
         </div>
+        <!--
+        <div class="container lower">
+            hey
+        </div>
+        -->
         
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="jquery-ui-1.10.0.custom.min.js"></script>
@@ -47,8 +176,9 @@
         
         <script>
             $(function() {
-                $("body").append('<div class="container"><div class="row-fluid"><div id="test" class="span8 box">&nbsp;</div><div class="span4"></div></div>"')
+                $("body").append('<div id="test-c" class="container" style="height: 0px; overflow: hidden;"><div class="row-fluid"><div id="test" class="span8 box">&nbsp;</div><div class="span4"></div></div>"')
                 var mainW = $("#test").width()
+                $("#test-c").remove()
                 var padding = 10, marginBottom = 20
                 var mainH = ($("#b1").height() + padding) * 2 + marginBottom
                 var boxToRegion = {
